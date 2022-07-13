@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" {{ meta.inject().htmlAttrs.text(true) }}>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="{{ meta.inject().BASE_URL.text() }}favicon.ico">
+    <title>{{ meta.inject().title.text() }}</title>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+    <noscript>
+      <strong>We're sorry but {{ meta.inject().title.text() }} doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+  </body>
+</html>
