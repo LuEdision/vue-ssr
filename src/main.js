@@ -14,6 +14,17 @@ Vue.mixin({
     titleTemplate: '%s | vue-ssr-website',
     title: 'vue-ssr-website',
     BASE_URL: '/',
+    htmlAttrs: {
+      lang: 'es',
+    },
+    noscript: [
+      {
+        body: true,
+        innerHTML:
+          // eslint-disable-next-line quotes
+          "<strong>We're sorry but vue-ssr-website doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>",
+      },
+    ],
   },
 });
 
