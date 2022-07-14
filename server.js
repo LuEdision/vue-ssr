@@ -68,21 +68,21 @@ const render = async (req, res) => {
     };
 
     //````````````渲染一个string类型的Vue实例（内容少时）````````````````
-    const html = await renderer.renderToString(context);
-    res.end(html); // or res.send(html);
+    // const html = await renderer.renderToString(context);
+    // res.end(html); // or res.send(html);
     //````````````渲染一个流模式的Vue实例（内容多时）````````````````````
-    // const ssrStream = await renderer.renderToStream(context);
-    // const buffers = [];
-    // ssrStream.on('data', (data) => {
-    //   buffers.push(data);
-    // });
-    // ssrStream.on('error', (error) => {
-    //   console.log('stream-error', error);
-    // });
-    // ssrStream.on('end', () => {
-    //   console.log('stream-end');
-    //   res.end(Buffer.concat(buffers));
-    // });
+    const ssrStream = await renderer.renderToStream(context);
+    const buffers = [];
+    ssrStream.on('data', (data) => {
+      buffers.push(data);
+    });
+    ssrStream.on('error', (error) => {
+      console.log('stream-error', error);
+    });
+    ssrStream.on('end', () => {
+      console.log('stream-end');
+      res.end(Buffer.concat(buffers));
+    });
   } catch (err) {
     console.log('error-capture', err);
     res.status(500).send('Internal Server Error');

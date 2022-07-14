@@ -109,7 +109,7 @@ module.exports = defineConfig({
       });
     config.plugin('html').tap((args) => {
       args[0].title = 'vue2-ssr-website';
-      args[0].template = './public/index.template.html';
+      args[0].template = './public/index.html';
       args[0].filename = 'index.html';
       args[0].templateParameters = {
         BASE_URL: '/',
